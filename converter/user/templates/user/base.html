@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'user/css/styles.css' %}" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'user/js/main.js'%}" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        {% block mainmenu %}
+        <div class="header">
+            <div id="mainmenu" class="mainmenu">
+                {% if request.user.is_authenticated %}
+                <div class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></div>
+                {% else %}
+                <div class="last"><a href="{% url 'registration' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></div>
+                {% endif %}
+            </div>
+            <div class="clear"></div>
+        </div>
+        {% endblock mainmenu %} {% block content %} {% endblock %}
+    </div>
+</body>
+
+</html>

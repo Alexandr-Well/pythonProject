@@ -1,0 +1,6 @@
+<html xmlns="http://www.w3.org/1999/html">
+{% extends "user/base.html" %} {% block content %}
+
+<a href="{{files.file.url}}" download>{{files.title}}</a> | {{files.crated_at}} {% endblock %}
+
+</html>

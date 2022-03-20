@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/html">
+<title>Авторизация</title>
+<a href="{% url 'user_info' %}">Back</a>
+<h1>
+    Авторизация
+</h1>
+
+<form method="post">
+    {% csrf_token %} {% for elem in form %}
+
+    <p><label class="example" for="{{elem.id_for_label}}">{{elem.label}}: </label>{{elem}}</p>
+    <div>{{elem.errors}}</div>
+    {% endfor %}
+    <button type="submit">submit</button>
+
+</form>
+
+</html>

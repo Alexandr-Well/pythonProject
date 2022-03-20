@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/html">
+{% extends "user/base.html" %} {% block content %}
+<div class="main-content">
+    <div class="uploaded-form">
+        <div class="spinner-position">
+            <div id="spinner-box" class="not-visible">
+                <div id="circularG">
+                    <div id="circularG_1" class="circularG"></div>
+                    <div id="circularG_2" class="circularG"></div>
+                    <div id="circularG_3" class="circularG"></div>
+                    <div id="circularG_4" class="circularG"></div>
+                    <div id="circularG_5" class="circularG"></div>
+                    <div id="circularG_6" class="circularG"></div>
+                    <div id="circularG_7" class="circularG"></div>
+                    <div id="circularG_8" class="circularG"></div>
+                </div>
+            </div>
+        </div>
+        <div id="form-id" class="">
+            <h2>
+                Загрузить:
+            </h2>
+            <form id="user-form" method="post" action="{% url 'user_info' %}" enctype="multipart/form-data">
+                {% csrf_token %} {{ form.as_p }}
+                <button id="btn-id" class="btn" type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+    <div class="uploaded-files">
+        <h2 class="title-name">
+            Загруженые файлы:
+        </h2>
+        {% for item in files %}
+        <li>
+            <p>
+                <a href="{{item.file.url}}" download>{{item.title}}</a> | {{item.crated_at}}
+            </p>
+        </li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+</html>
